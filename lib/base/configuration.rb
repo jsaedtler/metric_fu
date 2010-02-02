@@ -6,9 +6,9 @@ module MetricFu
   # course, in order to use these metrics, their respective gems must
   # be installed on the system.
   AVAILABLE_METRICS = [:churn, :flog, :flay, :reek, 
-                       :roodi, :saikuro, :rcov]
+                       :roodi, :saikuro, :rcov, :benchmark]
 
-  AVAILABLE_GRAPHS = [:flog, :flay, :reek, :roodi, :rcov]
+  AVAILABLE_GRAPHS = [:flog, :flay, :reek, :roodi, :rcov, :benchmark]
   AVAILABLE_GRAPH_ENGINES = [:gchart, :bluff]
 
   # The @@configuration class variable holds a global type configuration

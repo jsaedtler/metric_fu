@@ -1,0 +1,28 @@
+<h3>Benchmark Results</h3>
+
+<p>Benchmark runs rake test:benchmark on your code.</p>
+
+<% graph_name = 'benchmark' %>
+<% if MetricFu.configuration.graph_engine == :gchart %>
+<img src="<%= graph_name %>.png?<%= Time.now.to_i %>" />
+<% else %>
+<canvas id="graph"></canvas>
+<script language="javascript" src="<%= graph_name %>.js?<%= Time.now.to_i %>" type="text/javascript"></script>
+<% end %>
+
+
+<table>
+  <tr>
+    <th>Test</th>
+    <th>Wall Time</th>		  
+  </tr>
+  <% count = 0 %>
+  <% @benchmark[:matches].each do |match| %>
+    <tr class='<%= cycle("light", "dark", count) %>'>
+      <td><%= match[:time] %></td>
+      <td><%= match[:testname] %></td>
+    </tr>
+    <% count += 1 %>
+  <% end %>
+</table>
+<p>Generated on <%= Time.now.localtime %></p>	

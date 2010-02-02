@@ -4,10 +4,10 @@
 
 <% graph_name = 'flay' %>
 <% if MetricFu.configuration.graph_engine == :gchart %>
-<img src="<%= graph_name %>.png?<%= Time.now.to_i %>" />
+  <img src="<%= graph_name %>.png?<%= Time.now.to_i %>" />
 <% else %>
-<canvas id="graph"></canvas>
-<script language="javascript" src="<%= graph_name %>.js?<%= Time.now.to_i %>" type="text/javascript"></script>
+  <canvas id="graph"></canvas>
+  <script language="javascript" src="<%= graph_name %>.js?<%= Time.now.to_i %>" type="text/javascript"></script>
 <% end %>
 
 <h4>Total Score (lower is better): <%= @flay[:total_score] %></h4>

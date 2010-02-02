@@ -13,6 +13,21 @@ module MetricFu
     EOS
   end
   
+  class BenchmarkBluffGrapher < BenchmarkGrapher
+    def graph!
+      content = <<-EOS
+        #{BLUFF_DEFAULT_OPTIONS}
+        g.title = 'rake:benchmark wall times:';
+      EOS
+      @benchmarks.each do |test, data|
+        content << "g.data('#{test}',[#{data.join(',')}]);"
+      end
+      content << "g.labels = #{@labels.to_json};"
+      content << "g.draw();"
+      File.open(File.join(MetricFu.output_directory, 'benchmark.js'), 'w') {|f| f << content }
+    end
+  end
+
   class FlayBluffGrapher < FlayGrapher
     def graph!
       content = <<-EOS
