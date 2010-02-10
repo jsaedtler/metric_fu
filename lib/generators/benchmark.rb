@@ -6,7 +6,7 @@ module MetricFu
     end
 
     def emit
-      @output = `rake test:benchmark`
+      @output = `rake environment RAILS_ENV=benchmark dev_benchmark`
     end
 
     def analyze
